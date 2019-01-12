@@ -1,57 +1,30 @@
-
-var num = 6;
-var Cities = [];
-var best = [];
-var order = [];
-var tracker;
-var min = Infinity;
-
-change = function() {
-	for(var i = 0; i<num; i++) {
-		var tmp = order[i];
-		var tmp2 = floor(random(num));
-		order[i] = order[tmp2];
-		order[tmp2] = tmp;
-	}
+function Firework(velocity, position) {
+	this.vel = velocity;
+	this.pos = position;
 }
 
-calcDist = function() {
-	var sum = 0;
-	for(var i = 0; i<num-1; i++) {
-		sum += dist(Cities[order[i]].x, Cities[order[i]].y, Cities[order[i+1]].x, Cities[order[i+1]].y);
-	}
-	return sum;
+function move(firework) {
+	firework.pos.y += firework.velocity;
+	firework.velocity += 1;
 }
+
+var num = 0;
+var fireworks = [];
 
 function setup() {
-  // put setup code here
 	createCanvas(500, 500);
-	for(var i = 0; i<num; i++) {
-		Cities[i] = createVector(floor(random(width)), floor(random(height)));
-	}
-	for(var i = 0; i<num; i++) {
-		order[i] = i;
-		best[i] = i;
-	}
 }
 
 function draw() {
-  // put drawing code here
 	background(0);
 	fill(255);
-	for(var i = 0; i<num; i++) {
-		ellipse(Cities[i].x, Cities[i].y, 10, 10);
+	var rnd = random(0,1);
+	if(rnd<0.1) {
+		fireworks.add(new Firework(-random(20), createVector(random(width), height);
+		num++;
 	}
-	for(var i = 0; i<num-1; i++) {
-		stroke(255);
-		line(Cities[best[i]].x, Cities[best[i]].y, Cities[best[i+1]].x, Cities[best[i+1]].y);
-		stroke(50);
-		line(Cities[order[i]].x, Cities[order[i]].y, Cities[order[i+1]].x, Cities[order[i+1]].y);
-	}
-	var distance;
-	distance = calcDist();
-	if(distance < min) {
-		min = distance;
-		best = order.slice();
+	for(var i =0; i<num; i++)  {
+		move(fireworks[i]);
+		ellipse(fireworks[i].pos.x, fireworks[i].pos.y, 10, 10);
 	}
 }
