@@ -20,7 +20,7 @@ function draw() {
 	fill(255);
 	var rnd = random(0,1);
 	if(rnd<0.1) {
-		fireworks.add(new Firework(-random(20), createVector(random(width), height);
+		fireworks.push(new Firework(-random(20), createVector(random(width), height);
 		num++;
 	}
 	for(var i =0; i<num; i++)  {
