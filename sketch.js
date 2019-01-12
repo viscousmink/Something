@@ -6,7 +6,7 @@ function setup() {
   // put setup code here
 	createCanvas(500, 500);
 	for(var i = 0; i<num; i++) {
-		Cities = createVector(floor(random(width)), floor(random(height)));
+		Cities[i] = createVector(floor(random(width)), floor(random(height)));
 	}
 }
 
