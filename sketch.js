@@ -18,6 +18,7 @@ function setup() {
 function mousePressed() {
 	fireworks.push(new Firework(-random(20), createVector(random(width), height)));
 	num++;
+	console.log('launched');
 }
 
 function draw() {
