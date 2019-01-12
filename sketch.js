@@ -15,14 +15,14 @@ function setup() {
 	createCanvas(500, 500);
 }
 
+function mousePressed() {
+	fireworks.push(new Firework(-random(20), createVector(random(width), height)));
+	num++;
+}
+
 function draw() {
 	background(0);
 	fill(255);
-	var rnd = random(0,1);
-	if(rnd<0.1) {
-		fireworks.push(new Firework(-random(20), createVector(random(width), height)));
-		num++;
-	}
 	for(var i =0; i<num; i++)  {
 		move(fireworks[i]);
 		ellipse(fireworks[i].pos.x, fireworks[i].pos.y, 10, 10);
