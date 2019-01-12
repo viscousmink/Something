@@ -15,6 +15,14 @@ change = function() {
 	}
 }
 
+calcDist = function() {
+	var sum = 0;
+	for(var i = 0; i<num-1; i++) {
+		sum += dist(Cities[order[i]].x, Cities[order[i]].y, Cities[order[i+1]].x, Cities[order[i+1]].y);
+	}
+	return sum;
+}
+
 function setup() {
   // put setup code here
 	createCanvas(500, 500);
@@ -41,7 +49,7 @@ function draw() {
 		line(Cities[order[i]].x, Cities[order[i]].y, Cities[order[i+1]].x, Cities[order[i+1]].y);
 	}
 	var distance;
-	distance = dist(Cities[order[i]].x, Cities[order[i]].y, Cities[order[i+1]].x, Cities[order[i+1]].y);
+	distance = calcDist();
 	if(distance < min) {
 		min = distance;
 		best = order.slice();
